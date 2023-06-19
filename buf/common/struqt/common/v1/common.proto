@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package struqt.common.v1;
+
+option csharp_namespace = "Struqt.Common.V1";
+option go_package = "github.com/struqt/proto/struqt/common/v1;common";
+option java_package = "com.struqt.proto.common.v1";
+
+message Dummy {
+  int32 version = 1;
+}

@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package struqt.demo.v3;
+
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "struqt/demo/v3/echo_value.proto";
+
+option csharp_namespace = "Struqt.Demo.V3";
+option go_package = "github.com/struqt/proto/struqt/demo/v3;demo";
+option java_package = "com.struqt.proto.demo.v3";
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "gRPC Demo";
+    version: "3";
+  };
+  produces: "application/json";
+  consumes: "application/json";
+};
+
+service DemoService {
+  rpc EchoValue(EchoValueRequest) returns (EchoValueResponse) {
+    option (google.api.http) = {
+      body: "*"
+      post: "/demo/v3/echo"
+    };
+  }
+}

@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package struqt.demo.v1;
+
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+option csharp_namespace = "Struqt.Demo.V1";
+option go_package = "github.com/struqt/proto/struqt/demo/v1;demo";
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "gRPC Demo";
+    version: "1.0";
+  };
+  produces: "application/json";
+  consumes: "application/json";
+};
+
+service BasicService {
+  rpc JsonRpc(JsonRpcRequest) returns (JsonRpcResponse) {
+    // https://www.jsonrpc.org/specification
+    option (google.api.http) = {
+      body: "*"
+      post: "/demo/v1/json"
+    };
+  }
+}
+
+service DemoService {
+  rpc Echo(EchoRequest) returns (EchoResponse) {
+    option (google.api.http) = {
+      body: "*"
+      post: "/demo/v1/echo"
+    };
+  }
+}
+
+message EchoRequest {
+  string value = 2;
+}
+
+message EchoResponse {
+  int32 version = 1;
+  string value = 2;
+}
+
+message JsonRpcRequest {
+  string method = 2;
+  google.protobuf.Value params = 3;
+  google.protobuf.Value id = 4;
+}
+
+message JsonRpcErrorObject {
+  int32 code = 1;
+  string message = 2;
+  google.protobuf.Value data = 3;
+}
+
+message JsonRpcResponse {
+  oneof one_of {
+    google.protobuf.Value result = 2;
+    JsonRpcErrorObject error = 3;
+  }
+  google.protobuf.Value id = 4;
+}
