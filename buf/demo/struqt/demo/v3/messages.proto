@@ -12,6 +12,16 @@ option csharp_namespace = "Struqt.Demo.V3";
 option go_package = "github.com/struqt/proto/struqt/demo/v3;demo";
 option java_package = "com.struqt.proto.demo.v3";
 
+message EchoValueRequest {
+  google.protobuf.Value value = 1;
+}
+
+message EchoValueResponse {
+  google.protobuf.Value value = 1;
+  google.protobuf.Timestamp timestamp = 2;
+  Proto3Message pb3_message = 3;
+}
+
 enum EnumValue {
   ENUM_VALUE_UNSPECIFIED = 0;
   ENUM_VALUE_X = 1;
