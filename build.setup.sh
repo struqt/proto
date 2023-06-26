@@ -57,6 +57,49 @@ go_install_bin() {
   else echo "Installed: $package"; fi
 }
 
+download_protobuf_with_curl() {
+  local url="https://raw.githubusercontent.com/${1:?}"
+  local path="buf/${2:?}"
+  if [ -f "${path:?}" ]; then
+    return
+  fi
+  mkdir -p "$(dirname "${path:?}")"
+  curl "${url:?}" -o "${path}"
+}
+
+download_protobuf_google_api() {
+  local version="${1}"
+  download() {
+    local file="${1}"
+    local repo='googleapis'
+    local base_url="googleapis/${repo}/${version:?}/google/api"
+    local base_path="${repo}/google/api"
+    download_protobuf_with_curl "${base_url}/${file}" "${base_path}/${file:?}"
+  }
+  download annotations.proto
+  download field_behavior.proto
+  download http.proto
+  download httpbody.proto
+}
+
+download_protobuf_grpc_gateway() {
+  local version="${1}"
+  download() {
+    local file="${1}"
+    local package=protoc-gen-openapiv2/options
+    local repo='grpc-gateway'
+    local base_url="grpc-ecosystem/${repo}/${version:?}/${package}"
+    local base_path="${repo}/${package}"
+    download_protobuf_with_curl "${base_url}/${file}" "${base_path}/${file:?}"
+  }
+  download annotations.proto
+  download openapiv2.proto
+}
+
+download_protobuf_google_api master
+download_protobuf_grpc_gateway v2.16.0
+echo 'Downloading proto files finished'
+
 install_protobuf
 
 declare -rx GOPATH="$PWD/.go"
@@ -68,3 +111,4 @@ go_install_bin protoc-gen-go v1.30.0 google.golang.org/protobuf/cmd/protoc-gen-g
 go_install_bin protoc-gen-go-grpc v1.3.0 google.golang.org/grpc/cmd/protoc-gen-go-grpc
 go_install_bin protoc-gen-grpc-gateway v2.16.0 github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway
 go_install_bin protoc-gen-openapiv2 v2.16.0 github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2
+echo 'Installation finished'

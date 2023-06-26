@@ -24,7 +24,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/demov2EchoResponse"
+              "$ref": "#/definitions/v2EchoResponse"
             }
           },
           "default": {
@@ -40,7 +40,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/demov2EchoRequest"
+              "$ref": "#/definitions/v2EchoRequest"
             }
           }
         ],
@@ -56,7 +56,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/demov2JsonRpcResponse"
+              "$ref": "#/definitions/v2JsonRpcResponse"
             }
           },
           "default": {
@@ -72,7 +72,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/demov2JsonRpcRequest"
+              "$ref": "#/definitions/v2JsonRpcRequest"
             }
           }
         ],
@@ -92,62 +92,6 @@
     }
   },
   "definitions": {
-    "demov2EchoRequest": {
-      "type": "object",
-      "properties": {
-        "value": {
-          "type": "string"
-        }
-      }
-    },
-    "demov2EchoResponse": {
-      "type": "object",
-      "properties": {
-        "version": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "value": {
-          "type": "string"
-        }
-      }
-    },
-    "demov2JsonRpcErrorObject": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "int32"
-        },
-        "message": {
-          "type": "string"
-        },
-        "data": {},
-        "v1d": {
-          "$ref": "#/definitions/v1Dummy"
-        }
-      }
-    },
-    "demov2JsonRpcRequest": {
-      "type": "object",
-      "properties": {
-        "method": {
-          "type": "string"
-        },
-        "params": {},
-        "id": {}
-      }
-    },
-    "demov2JsonRpcResponse": {
-      "type": "object",
-      "properties": {
-        "result": {},
-        "error": {
-          "$ref": "#/definitions/demov2JsonRpcErrorObject"
-        },
-        "id": {}
-      }
-    },
     "protobufAny": {
       "type": "object",
       "properties": {
@@ -163,7 +107,7 @@
         "NULL_VALUE"
       ],
       "default": "NULL_VALUE",
-      "description": "`NullValue` is a singleton enumeration to represent the null value for the\n`Value` type union.\n\n The JSON representation for `NullValue` is JSON `null`.\n\n - NULL_VALUE: Null value."
+      "description": "`NullValue` is a singleton enumeration to represent the null value for the\n`Value` type union.\n\nThe JSON representation for `NullValue` is JSON `null`.\n\n - NULL_VALUE: Null value."
     },
     "rpcStatus": {
       "type": "object",
@@ -191,6 +135,62 @@
           "type": "integer",
           "format": "int32"
         }
+      }
+    },
+    "v2EchoRequest": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "v2EchoResponse": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "v2JsonRpcErrorObject": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "data": {},
+        "v1d": {
+          "$ref": "#/definitions/v1Dummy"
+        }
+      }
+    },
+    "v2JsonRpcRequest": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "type": "string"
+        },
+        "params": {},
+        "id": {}
+      }
+    },
+    "v2JsonRpcResponse": {
+      "type": "object",
+      "properties": {
+        "result": {},
+        "error": {
+          "$ref": "#/definitions/v2JsonRpcErrorObject"
+        },
+        "id": {}
       }
     }
   }
