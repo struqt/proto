@@ -11,8 +11,17 @@ option java_package = "com.struqt.proto.common.v1";
 option go_package = "github.com/struqt/proto/struqt/common/v1;common";
 
 
+service CommonService {
+  rpc GetServerInfo(GetServerInfoRequest) returns (GetServerInfoResponse) {
+    option (google.api.http) = {
+      get: "/common/v1/server-info"
+    };
+  }
+}
+
+
 enum ServerStatus {
-  SERVER_STATUS_UNKNOWN = 0;
+  SERVER_STATUS_UNSPECIFIED = 0;
   SERVER_STATUS_INITIAL = 1;
   SERVER_STATUS_STARTING = 2;
   SERVER_STATUS_RUNNING = 3;
@@ -35,10 +44,7 @@ message GetServerInfoResponse {
   ];
 }
 
-service CommonService {
-  rpc GetServerInfo(GetServerInfoRequest) returns (GetServerInfoResponse) {
-    option (google.api.http) = {
-      get: "/common/v1/server-info"
-    };
-  }
+
+message Dummy {
+  int32 version = 1;
 }

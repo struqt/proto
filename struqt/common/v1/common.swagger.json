@@ -90,13 +90,13 @@
     "v1ServerStatus": {
       "type": "string",
       "enum": [
-        "SERVER_STATUS_UNKNOWN",
+        "SERVER_STATUS_UNSPECIFIED",
         "SERVER_STATUS_INITIAL",
         "SERVER_STATUS_STARTING",
         "SERVER_STATUS_RUNNING",
         "SERVER_STATUS_SHUTDOWN"
       ],
-      "default": "SERVER_STATUS_UNKNOWN"
+      "default": "SERVER_STATUS_UNSPECIFIED"
     }
   }
 }
