@@ -8,3 +8,9 @@ and help you to utilize them more efficiently.
 
 You can also use these definitions with open source tools to generate client libraries,
 documentation, and other artifacts.
+
+## Download the 3rd party dependency files
+
+```shell
+./update.sh
+```
