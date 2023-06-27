@@ -14,5 +14,5 @@ deps:
   - remote: buf.build
     owner: struqt
     repository: common
-    commit: a2ab58af851a4364a66f3c6cd4b8662c
-    digest: shake256:f4e3047a2edf81b44986c5ab36c5dd53770a92c3c0d73220ab000ae88bb0983a43347d7d257137254d55e846aa8f5b5b02a72f06398f8cf0165148cb3753fe5d
+    commit: 122ce13e1a0d41b1880a647a1ba187c3
+    digest: shake256:debbf0da921d6219ba3ae807b3c217844c9353a7ae24b65cae9db2df37a3d29e7f8674e9328136268e8ec325ea511bd336799028c8b6d9e469b3bfc6a75638d6
