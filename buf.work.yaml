@@ -1,6 +1,0 @@
-version: v1
-
-directories: [
-  buf/common,
-  buf/demo,
-]
