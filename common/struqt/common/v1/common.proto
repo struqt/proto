@@ -36,11 +36,14 @@ message GetServerInfoResponse {
     (google.api.field_behavior) = IMMUTABLE,
     (google.api.field_behavior) = REQUIRED
   ];
-  google.protobuf.Timestamp started_at = 23[
+  google.protobuf.Timestamp started_at = 23 [
     (google.api.field_behavior) = IMMUTABLE
   ];
-  ServerStatus status = 24[
+  ServerStatus status = 24 [
     (google.api.field_behavior) = IMMUTABLE
+  ];
+  google.protobuf.Timestamp timestamp = 25 [
+    (google.api.field_behavior) = REQUIRED
   ];
 }
 
