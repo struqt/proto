@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eo pipefail
+set -euo pipefail
 
 declare -r SELF=$(readlink -f "$0")
 declare -r SELF_DIR=${SELF%/*}
@@ -45,4 +45,5 @@ download_proto_grpc_gateway() {
 
 download_proto_google_api master
 download_proto_grpc_gateway "${GRPC_GATEWAY_VERSION:?}"
+
 echo 'Downloading is finished'
