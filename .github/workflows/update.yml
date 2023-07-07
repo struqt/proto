@@ -1,0 +1,22 @@
+name: Update
+
+on:
+  workflow_dispatch:
+    inputs:
+      grpc-gateway-version:
+        type: string
+        required: false
+        description: 'Version Tag of gRPC-Gateway'
+
+jobs:
+  download-then-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: /bin/bash ./download.sh ${{ github.event.inputs.grpc-gateway-version }}
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_author: 'wkang[bot] <wkang2015@163.com>'
+          commit_message: '[bot-commit] Run download.sh ${{ github.event.inputs.grpc-gateway-version }}'
+  #download-then-commit
+#jobs
