@@ -50,4 +50,5 @@ message GetServerInfoResponse {
 
 message Dummy {
   int32 version = 1;
+  string version_tag = 2;
 }
