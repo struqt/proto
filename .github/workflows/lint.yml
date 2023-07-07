@@ -1,0 +1,35 @@
+name: Lint
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  buf-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: bufbuild/buf-setup-action@v1
+      - run: |
+          do_buf_lint() {
+            echo '% buf ls-files'
+            buf ls-files
+            echo '% buf build'
+            buf build
+            echo '% buf lint'
+            buf lint
+          }
+          do_buf_lint
+  #buf-lint
+  buf-lint-action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: bufbuild/buf-setup-action@v1
+      - run: buf ls-files
+      - uses: bufbuild/buf-lint-action@v1
+  #buf-lint-action
+#jobs
