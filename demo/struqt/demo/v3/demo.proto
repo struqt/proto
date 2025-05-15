@@ -7,8 +7,9 @@ import "protoc-gen-openapiv2/options/annotations.proto";
 import "struqt/demo/v3/messages.proto";
 
 option csharp_namespace = "Struqt.Demo.V3";
-option go_package = "github.com/struqt/proto/struqt/demo/v3;demo";
+option go_package = "github.com/struqt/proto/struqt/demo/v3;v3demo";
 option java_package = "com.struqt.proto.demo.v3";
+
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
   info: {
     title: "gRPC Demo";
