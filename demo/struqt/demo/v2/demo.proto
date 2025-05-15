@@ -60,9 +60,9 @@ message DemoOption {
   int32 retry = 999993;
   bool async = 999992;
   enum Command {
-    COMMAND_UNSPECIFIED /*      */ = 0;
-    COMMAND_SERVER_INFO_Q2S /*  */ = 10111;
-    COMMAND_SERVER_INFO_R2C /*  */ = 10112;
+    COMMAND_UNSPECIFIED = 0;
+    COMMAND_SERVER_INFO_Q2S = 10111;
+    COMMAND_SERVER_INFO_R2C = 10112;
   }
 }
 extend google.protobuf.MessageOptions {

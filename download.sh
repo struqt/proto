@@ -4,7 +4,7 @@ set -euo pipefail
 declare -r SELF=$(readlink -f "$0")
 declare -r SELF_DIR=${SELF%/*}
 declare -r BUF_DIR="${SELF_DIR}"
-declare -r GRPC_GATEWAY_VERSION="${1:-v2.16.0}"
+declare -r GRPC_GATEWAY_VERSION="${1:-v2.26.3}"
 
 download_file_with_curl() {
   local url="https://raw.githubusercontent.com/${1:?}"
