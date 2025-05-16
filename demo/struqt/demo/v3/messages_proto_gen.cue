@@ -1,4 +1,4 @@
-package demo
+package v3demo
 
 import (
 	"time"
@@ -112,7 +112,12 @@ import (
 	} | {
 		oneofStringValue: string @protobuf(12,string,name=oneof_string_value)
 	}
+
 	{} | {
-		nestedOneofValueOne: #Proto3Message @protobuf(21,Proto3Message,name=nested_oneof_value_one)
+		nestedOneofMsg: #Proto3Message @protobuf(21,Proto3Message,name=nested_oneof_msg)
 	}
+	// Will cause CUE failed:
+	//oneof nested_oneof_self_value {
+	//  Proto3OneOf nested_oneof_self = 22;
+	//}
 }

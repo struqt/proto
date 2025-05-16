@@ -80,7 +80,11 @@ message Proto3OneOf {
     bool oneof_bool_value = 11;
     string oneof_string_value = 12;
   }
-  oneof nested_oneof_value {
-    Proto3OneOf nested_oneof_value_one = 21;
+  oneof nested_oneof_msg_value {
+    Proto3Message nested_oneof_msg = 21;
   }
+  // Will cause CUE failed:
+  //oneof nested_oneof_self_value {
+  //  Proto3OneOf nested_oneof_self = 22;
+  //}
 }

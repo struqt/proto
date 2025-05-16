@@ -1,4 +1,4 @@
-package demo
+package v3demo
 
 #Proto3MessageCUE: #Proto3Message & {
 	int32Value?: int32 & >=0 & <20
@@ -34,6 +34,15 @@ examples: {
 		}
 		mapValue2: {
 			more: 127
+		}
+	}
+}
+
+examples_oneof: {
+	"example3": #Proto3OneOf & {
+		oneofBoolValue: false
+		nestedOneofMsg: {
+			int32Value: 15
 		}
 	}
 }
